@@ -1,0 +1,13 @@
+*.git*
+README.md
+.npmrc
+node_modules/*
+src/*
+.DS_Store
+*.log
+theme-exclude.lst
+tailwind.config.js
+webpack.config.js
+routes.yaml
+redirects.yaml
+redirects.json

@@ -1,0 +1,188 @@
+/* 
+ * Post styles will mostly use TailwindCSS Typography,
+ * which can be customized in the tailwind.config.js file.
+ */
+.post-full-content {
+    iframe {
+        @apply my-0 mx-auto;
+    }
+
+    /* Full bleed images (#full)
+    Super neat trick courtesy of @JoelDrapper
+    Usage (In Ghost edtior):
+
+    ![img](/some/image.jpg#full)
+    */
+    img[src$="#full"] {
+        @apply max-w-none w-screen;
+    }
+
+    /* Image captions
+    Usage (In Ghost editor):
+
+    ![img](/some/image.jpg)
+    <small>Your image caption</small>
+    */
+    img+br+small {
+        @apply block -mt-12 mb-6 text-center;
+    }
+}
+
+.post-full.no-image > .post-full-header {
+    @apply mb-12;
+}
+
+/*
+ * The Ghost editor adds classes to widgets such as Image,
+ * Gallery, Bookmark, etc.
+ * See: https: //ghost.org/docs/api/v3/handlebars-themes/editor/
+ */
+
+.kg-width-full {
+    // See: https://css-tricks.com/full-width-containers-limited-width-parents/
+    @apply w-screen relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    >img {
+        @apply rounded-none #{!important};
+    }
+}
+
+.kg-width-wide {
+    // See: https://css-tricks.com/full-width-containers-limited-width-parents/
+    @apply min-w-full relative;
+    width: 85vw;
+    margin: auto calc(50% - 50vw);
+    transform: translateX(calc(50vw - 50%));
+}
+
+/* Gallery Card */
+
+.kg-gallery-container {
+    @apply flex flex-col min-w-full my-6 relative;
+    width: 85vw;
+    margin: auto calc(50% - 50vw);
+    transform: translateX(calc(50vw - 50%));
+
+    >.kg-gallery-row {
+        @apply flex flex-row justify-center;
+
+        &:not(:first-of-type) {
+            @apply m-0 mt-3;
+        }
+
+        >.kg-gallery-image {
+            &:not(:first-of-type) {
+                @apply m-0 ml-3;
+            }
+            img {
+                @apply block m-0 w-full h-full rounded;
+            }
+        }
+    }
+}
+
+/* Bookmark Card */
+
+.kg-bookmark-card {
+    @apply w-full relative;
+
+    > .kg-bookmark-container {
+        @apply flex flex-wrap flex-row-reverse text-gray-900 min-w-full border border-gray-300 no-underline;
+        width: 85vw;
+        margin: auto calc(50% - 50vw);
+        transform: translateX(calc(50vw - 50%));
+
+        &:hover {
+            @apply shadow-lg no-underline;
+        }
+
+        >.kg-bookmark-content {
+            @apply p-5 order-1;
+            flex-basis: 0;
+            flex-grow: 999;
+
+            > .kg-bookmark-title {
+                @apply text-gray-900 text-base font-semibold leading-normal transition duration-200 ease-in-out;
+
+                &:hover {
+                    @apply text-blue-600;
+                }
+            }
+            >.kg-bookmark-description {
+                @apply mt-4 text-gray-700 overflow-hidden;
+            }
+            >.kg-bookmark-metadata {
+                @apply mt-4 items-center truncate;
+
+                >.kg-bookmark-icon {
+                    @apply inline-block mr-2 w-6 h-6 align-text-bottom;
+                    @apply my-0 #{!important};
+                }
+
+                >.kg-bookmark-author {
+                    @apply text-gray-600 truncate;
+                }
+
+                >.kg-bookmark-author:after {
+                    @apply my-0 mx-2;
+                    content: "•";
+                }
+
+                >.kg-bookmark-publisher {
+                    @apply text-gray-600 truncate;
+                }
+
+            }
+        }
+        >.kg-bookmark-thumbnail {
+            @apply flex flex-grow;
+            flex-basis: 24rem;
+
+            > img {
+                @apply max-w-full h-auto object-cover align-bottom;
+                @apply rounded-none my-0 #{!important};
+            }
+        }
+    }
+}
+
+/* Embed Card */
+.kg-embed-card {
+    @apply flex flex-col items-center w-full;
+}
+
+/* 
+ * Light & responsive YouTube embeds.
+ * See: https: //www.labnol.org/internet/light-youtube-embeds/27941/
+ */
+.youtube-player {
+    @apply relative h-0 rounded-lg bg-black max-w-full overflow-hidden;
+    padding-bottom: 56.23%;
+
+    .play {
+        @apply absolute cursor-pointer opacity-75 text-gray-900;
+        left: 50%;
+        top: 50%;
+        height: 90px;
+        width: 90px;
+        margin-left: -45px;
+        margin-top: -45px;
+
+        &:hover {
+            @apply opacity-100;
+        }
+    }
+
+    iframe, object, embed {
+        @apply absolute top-0 left-0 w-full h-full bg-transparent z-50;
+    }
+
+    img {
+        @apply inset-0 absolute block w-full max-w-full border-none h-auto cursor-pointer;
+        @apply m-auto #{!important};
+    }
+}

@@ -1,0 +1,29 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{!-- The main content area --}}
+<main id="main" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h2 class="text-4xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-5xl sm:leading-10">
+                    {{@site.title}}
+                </h2>
+                <p class="mt-6 mb-12 md:mb-16 max-w-2xl mx-auto text-xl leading-7 text-gray-500">
+                    {{@site.description}}
+                </p>
+            </div>
+            
+            <div class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+                {{#foreach posts}}
+                
+                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                {{> "post-card"}}
+                
+                {{/foreach}}                
+            </div>
+            {{pagination}}
+        </div>
+    </div>
+</main>

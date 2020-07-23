@@ -1,0 +1,138 @@
+/**
+ * Tailwind CSS theme for `prism.js`
+ * Based on the syntax theme used in the Tailwind CSS docs, which is based on Atom's
+ * `atom-dark` theme: https://github.com/atom/atom-dark-syntax
+ * @author Taylor Bryant
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: #fff;
+    color: #edf2f7;
+    direction: ltr;
+    word-spacing: normal;
+    tab-size: 4;
+    hyphens: none;
+    @apply leading-normal subpixel-antialiased text-left whitespace-pre break-normal scrolling-touch;
+}
+
+pre[class*="language-"] {
+    @apply overflow-auto p-4 rounded-lg;
+}
+
+:not(pre)>code[class*="language-"],
+pre[class*="language-"] {
+    background-color: #2d3748;
+    font-size: 0.875rem;
+}
+
+code.language-js .token.regex,
+pre.language-js .token.regex,
+.token.selector,
+.token.attr-name,
+.token.property,
+.token.regex,
+.token.class-name,
+.token.entity {
+    color: #ffe484;
+}
+
+code.language-diff,
+pre.language-diff {
+    color: #cbd5e0;
+}
+
+code.language-diff .token.inserted,
+pre.language-diff .token.inserted,
+.token.url,
+.token.attr-value,
+.token.char,
+.token.string,
+.token.builtin,
+.token.inserted,
+.token.boolean,
+.token.constant {
+    color: #b5f4a5;
+}
+
+:not(pre)>code[class*="language-"] {
+    @apply p-1 rounded-md;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #a0aec0;
+}
+
+.namespace {
+    opacity: 0.7;
+}
+
+.token.symbol,
+.token.deleted,
+.token.tag,
+.token.number,
+code.language-js .token.boolean,
+pre.language-js .token.boolean {
+    color: #ff8383;
+}
+
+.token.unit,
+.token.function,
+.token.punctuation,
+.token.hexcode,
+.token.operator,
+code.language-js .token.operator,
+pre.language-js .token.operator {
+    color: #93ddfd;
+}
+
+.token.atrule,
+.token.atrule>.token.property,
+.token.atrule>.token.property+.token.punctuation,
+.token.atrule>.token.property+.token.punctuation+.token.number+.token.unit,
+.token.atrule>.token.number,
+.token.atrule>.token.unit,
+code.language-js .token.punctuation,
+pre.language-js .token.punctuation,
+code.language-js .token.keyword,
+pre.language-js .token.keyword,
+code.language-bash .token.function,
+pre.language-bash .token.function {
+    color: #fff;
+}
+
+.token.rule,
+.token.important,
+.token.variable {
+    font-weight: inherit;
+    color: #d9a9ff;
+}
+
+.token.bold {
+    @apply font-bold;
+}
+
+.token.italic {
+    @apply italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+div.code-toolbar > .toolbar {
+    position: absolute;
+    top: .3em;
+    right: .2em;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    margin-top: 0;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+    display: inline-block;
+}

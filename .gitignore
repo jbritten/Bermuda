@@ -1,0 +1,5 @@
+/node_modules
+/assets
+theme.zip
+.DS_Store
+yarn-error.log

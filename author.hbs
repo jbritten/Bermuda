@@ -1,0 +1,57 @@
+{{!< default}}
+{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
+
+{{!-- The main content area --}}
+<main id="main" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            {{#author}}
+            <div class="md:flex bg-white rounded-lg p-6 md:p-0">
+                {{#if profile_image}}
+                <img class="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6" src="{{profile_image}}" alt="{{name}}" />
+                {{else}}
+                <span class="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"><i class="fas fa-user-circle fa-2x"></i></span>
+                {{/if}}
+
+                <div class="text-center md:text-left">
+                    <h1 class="text-lg font-semibold">{{name}}</h1>
+                    {{#if bio}}
+                    <h2 class="text-gray-500">{{bio}}</h2>
+                    {{/if}}
+                    <div class="md:flex mt-4 md:mt-1 text-sm leading-5 text-gray-400">
+                        {{#if location}}
+                        <div class="hidden md:block">{{location}}</div>
+                        <span class="mx-2 hidden md:block">&middot;</span>
+                        {{/if}}
+                        <div class="hidden md:block">
+                            {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}
+                        </div>
+                        {{#if website}}
+                        <span class="mx-2 hidden md:block">&middot;</span>
+                        <span class="hover:underline"><a href="{{website}}" target="_blank" rel="noopener">Website</a></span>
+                        {{/if}}
+                        {{#if twitter}}
+                        <span class="mx-2">&middot;</span>
+                        <span class="hover:underline"><a href="{{twitter_url}}" target="_blank" rel="noopener">Twitter</a></span>
+                        {{/if}}
+                        {{#if facebook}}
+                        <span class="mx-2">&middot;</span>
+                        <span class="hover:underline"><a href="{{facebook_url}}" target="_blank" rel="noopener">Facebook</a></span>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/author}}
+            
+            <div class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+                {{#foreach posts}}
+                
+                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                {{> "post-card"}}
+                
+                {{/foreach}}                
+            </div>
+            {{pagination}}
+        </div>
+    </div>
+</main>

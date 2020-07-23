@@ -1,0 +1,66 @@
+<header id="header" x-data="{ mobileMenuOpen: false }" class="relative bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+            <div class="lg:w-0 lg:flex-1">
+                {{#if @site.logo}}
+                    <a class="flex" href="{{@site.url}}"><img src="{{img_url @site.logo size="l"}}" class="h-8 w-auto sm:h-10" alt="{{@site.title}}" /></a>
+                {{else}}
+                    <a class="flex" href="{{@site.url}}">{{@site.title}}</a>
+                {{/if}}
+            </div>
+            <div class="-mr-2 -my-2 md:hidden">
+                <button type="button" @click="mobileMenuOpen = true"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="hidden md:flex space-x-10">
+            {{#if @site.navigation}}
+                {{navigation}}
+            {{/if}}
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="mobileMenuOpen" x-transition:enter="duration-200 ease-out"
+        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-95"
+        class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+        <div class="rounded-lg shadow-lg">
+            <div class="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
+                <div class="pt-5 pb-6 px-5 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            {{#if @site.logo}}
+                                <img class="h-8 w-auto" src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" />
+                            {{else}}
+                                {{@site.title}}
+                            {{/if}}
+                        </div>
+                        <div class="-mr-2">
+                            <button type="button" @click="mobileMenuOpen = false"
+                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <nav class="grid row-gap-8">
+                            {{#if @site.navigation}}
+                            {{navigation}}
+                            {{/if}}
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

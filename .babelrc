@@ -1,0 +1,22 @@
+{
+    "plugins": [
+        ["prismjs", {
+            "languages": [
+                "bash",
+                "css",
+                "erb",
+                "html",
+                "javascript",
+                "json",
+                "nginx",
+                "ruby",
+                "sass",
+                "scss",
+                "yaml"
+            ],
+            "plugins": ["line-numbers", "copy-to-clipboard", "autolinker"],
+            "theme": "",
+            "css": true
+        }]
+    ]
+}

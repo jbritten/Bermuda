@@ -1,0 +1,55 @@
+{{!--
+This error template is used for all 400/500 errors, except 404, which might occur on your site.
+It's a good idea to keep this template as minimal as possible in terms of both file size and complexity.
+You'll notice that we *don't* use any JavaScript, or ghost_head / ghost_foot in this file.
+--}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{meta_title}}</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{asset "assets/main.css"}}">
+    <script type="text/javascript" src="{{asset "assets/main.js"}}" defer></script>
+</head>
+<body>
+    {{> site-header}}
+
+    <main id="main" class="max-w-3xl mx-auto sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-12">
+        <div class="relative pb-20 px-4 sm:px-6 lg:pb-28 lg:px-8">
+            <div class="relative max-w-7xl mx-auto py-8">
+                <div class="text-center">
+                    <h1 class="text-6xl leading-none opacity-75 tracking-tighter text-gray-700">{{statusCode}}</h1>
+                    <p class="text-3xl md:text-5xl font-normal leading-snug text-gray-900 mb-4">{{message}}</p>
+                    <a class="hover:underline" href="{{@site.url}}">Go to the front page →</a>
+                </div>
+            </div>
+
+            <div class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+                {{#if errorDetails}}
+                <section class="error-stack">
+                    <h3>Theme errors</h3>
+                    <ul class="error-stack-list">
+                        {{#foreach errorDetails}}
+                        <li>
+                            <em class="error-stack-function">{{{rule}}}</em>
+                
+                            {{#foreach failures}}
+                            <p><span class="error-stack-file">Ref: {{ref}}</span></p>
+                            <p><span class="error-stack-file">Message: {{message}}</span></p>
+                            {{/foreach}}
+                        </li>
+                        {{/foreach}}
+                    </ul>
+                </section>
+                {{/if}}
+            </div>
+        </div>
+    </main>
+
+    {{> site-footer}}
+</body>
+</html>

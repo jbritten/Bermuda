@@ -1,0 +1,105 @@
+{
+    "name": "bermuda",
+    "description": "Ghost theme using TailwindCSS and Webpack",
+    "demo": "https://www.prefinery.com/blog",
+    "version": "0.9.0",
+    "engines": {
+        "ghost": ">=3.0.0",
+        "ghost-api": "v3"
+    },
+    "license": "MIT",
+    "scripts": {
+        "dev": "run-p -l package",
+        "build": "run-s -l clean package:prod zip",
+        "clean": "rm -rf assets/ theme.zip",
+        "package": "webpack --mode development --watch --env.NODE_ENV=development",
+        "package:prod": "webpack --mode production --env.NODE_ENV=production",
+        "zip": "zip -r theme.zip . -x@theme-exclude.lst",
+        "test": "gscan .",
+        "test:ci": "gscan --fatal --verbose ."
+    },
+    "author": {
+        "name": "Justin Britten",
+        "email": "justinbritten@gmail.com",
+        "url": "https://www.justinbritten.com"
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme",
+        "tailwind",
+        "tailwindcss",
+        "webpack"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jbritten/Bermuda.git"
+    },
+    "bugs": "https://github.com/jbritten/Bermuda/issues",
+    "contributors": "https://github.com/jbritten/Bermuda/graphs/contributors",
+    "devDependencies": {
+        "@babel/core": "^7.10.4",
+        "@babel/preset-env": "^7.10.4",
+        "@fortawesome/fontawesome-svg-core": "^1.2.29",
+        "@fortawesome/free-brands-svg-icons": "^5.14.0",
+        "@fortawesome/free-solid-svg-icons": "^5.14.0",
+        "@fullhuman/postcss-purgecss": "^2.3.0",
+        "@tailwindcss/typography": "^0.2.0",
+        "alpinejs": "^2.4.1",
+        "autoprefixer": "9.7.6",
+        "babel-loader": "^8.1.0",
+        "babel-plugin-prismjs": "^2.0.1",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "beeper": "2.0.0",
+        "clipboard": "^2.0.6",
+        "copy-webpack-plugin": "^5.1.1",
+        "css-loader": "^3.6.0",
+        "cssnano": "4.1.10",
+        "file-loader": "^6.0.0",
+        "gscan": "3.4.1",
+        "html-loader": "^1.1.0",
+        "inquirer": "7.1.0",
+        "mini-css-extract-plugin": "^0.9.0",
+        "node-sass": "^4.14.1",
+        "npm-run-all": "^4.1.5",
+        "postcss-easy-import": "3.0.0",
+        "postcss-import": "^12.0.1",
+        "postcss-loader": "^3.0.0",
+        "prismjs": "^1.20.0",
+        "sass-loader": "^8.0.2",
+        "style-loader": "^1.2.1",
+        "tailwindcss": "^1.5.1",
+        "typeface-inter": "^3.12.0",
+        "url-loader": "^4.1.0",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    },
+    "browserslist": [
+        "defaults"
+    ],
+    "config": {
+        "posts_per_page": 9,
+        "image_sizes": {
+            "xxs": {
+                "width": 30
+            },
+            "xs": {
+                "width": 100
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 600
+            },
+            "l": {
+                "width": 1000
+            },
+            "xl": {
+                "width": 2000
+            }
+        }
+    },
+    "dependencies": {}
+}
